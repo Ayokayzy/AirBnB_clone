@@ -29,7 +29,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-    
+
     def __str__(self):
         """prints the string representation of the class"""
         return str("[{}] ({}) {}".format(BaseModel.__name__, self.id, self.__dict__))
@@ -45,9 +45,8 @@ class BaseModel:
         returns a dictionary containing all keys/values of __dict__ of the instance
         """
         return {
-                **self.__dict__,
-                "__class__":  BaseModel.__name__,
-                "created_at": self.created_at.isoformat(),
-                "updated_at": self.updated_at.isoformat()
-                }
-                                        
+            **self.__dict__,
+            "__class__":  BaseModel.__name__,
+            "created_at": self.created_at.isoformat(),
+            "updated_at": self.updated_at.isoformat()
+        }
