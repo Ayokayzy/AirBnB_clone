@@ -12,11 +12,23 @@ class BaseModel:
     for other classes in this project
     """
 
-    def __init__(self):
-        """initializes once an instance is created"""
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        # Initializes an instance of the class
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "__class__":
+                    continue
+                elif key == "updated_at" or key == "created_at":
+                    try:
+                        self.__dict__[key] = datetime.fromisoformat(value)
+                    except ValueError:
+                        raise ValueError(f"Invalid datetime format for attribute {key}")
+                else:
+                    self.__dict__[key] = value
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """prints the string representation of the class"""
