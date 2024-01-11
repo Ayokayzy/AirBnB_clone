@@ -2,16 +2,21 @@
 """
 console.py
 """
+import cmd
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
-    pass
+class HBNBCommand(cmd.Cmd):
+    prompt = '(hbnb) '
 
-user1 = BaseModel()
-print(user1.id)
-print(user1)
+    def do_quit(self, line):
+        """Quit command to exit the program"""
+        return True
 
-user2 = User()
-print(user2.id)
-print(user2)
+    def do_EOF(self, line):
+        """EOF command to exit the program"""
+        return True
+
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
