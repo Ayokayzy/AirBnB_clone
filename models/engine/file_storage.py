@@ -5,9 +5,11 @@ models/engine/file_storage.py
 import json
 import os.path
 from models.base_model import BaseModel
+from models.user import User
 
 all_class = {
-    "BaseModel": BaseModel
+    "BaseModel": BaseModel,
+    "User": User
 }
 
 class FileStorage:
