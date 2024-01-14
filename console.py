@@ -4,10 +4,12 @@ console.py
 """
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 my_list = {
     "BaseModel": BaseModel
+    "User" User
 }
 
 
