@@ -25,12 +25,12 @@ all_class = {
 
 class FileStorage:
     """
-    serializes instances to a JSON file and deserializes JSON file to instances:
+    serializes instances to a JSON file and
+    deserializes JSON file to instances:
     """
 
     __file_path = "file.json"
     __objects = {}
-
 
     def all(self):
         """returns the dictionary __objects"""
@@ -57,7 +57,7 @@ class FileStorage:
         if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised)
         """
-        #load string from file to a string
+        # load string from file to a string
         if not os.path.isfile(self.__file_path):
             return
         with open(self.__file_path, "r") as fp:

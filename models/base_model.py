@@ -23,7 +23,9 @@ class BaseModel:
                     try:
                         self.__dict__[key] = datetime.fromisoformat(value)
                     except ValueError:
-                        raise ValueError(f"Invalid datetime format for attribute {key}")
+                        raise ValueError(
+                            f"Invalid datetime format for attribute {key}"
+                        )
                 else:
                     self.__dict__[key] = value
         else:
@@ -34,18 +36,23 @@ class BaseModel:
 
     def __str__(self):
         """prints the string representation of the class"""
-        return str("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        return str(
+            "[{}] ({}) {}"
+            .format(self.__class__.__name__, self.id, self.__dict__)
+        )
 
     def save(self):
         """
-        updates the public instance attribute updated_at with the current datetime
+        updates the public instance attribute updated_at
+        with the current datetime
         """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """
-        returns a dictionary containing all keys/values of __dict__ of the instance
+        returns a dictionary containing all keys/values of
+        __dict__ of the instance
         """
         return {
             **self.__dict__,

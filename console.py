@@ -40,7 +40,8 @@ class HBNBCommand(cmd.Cmd):
 
     def help_create(self):
         print(
-            "Creates a new instance of BaseModel,saves it (to the JSON file) and prints the id\n"
+            """Creates a new instance of BaseModel,\
+ saves it (to the JSON file) and prints the id\n"""
         )
 
     def do_show(self, line):
@@ -48,8 +49,8 @@ class HBNBCommand(cmd.Cmd):
         if len(c) == 1 and c[0] == "":
             print("** class name missing **")
         elif len(c) < 2:
-                print("** instance id missing **")
-                return
+            print("** instance id missing **")
+            return
         elif len(c) == 2:
             if c[0] not in my_list:
                 print("** class doesn't exist **")
@@ -64,7 +65,8 @@ class HBNBCommand(cmd.Cmd):
 
     def help_show(self):
         print(
-            "Show Prints the string representation of an instance based on the class name and id"
+            "Show Prints the string representation of\
+ an instance based on the class name and id"
         )
 
     def do_destroy(self, line):
@@ -73,8 +75,8 @@ class HBNBCommand(cmd.Cmd):
         if len(c) == 1 and c[0] == "":
             print("** class name missing **")
         elif len(c) < 2:
-                print("** instance id missing **")
-                return
+            print("** instance id missing **")
+            return
         elif len(c) == 2:
             if c[0] not in my_list:
                 print("** class doesn't exist **")
@@ -85,7 +87,8 @@ class HBNBCommand(cmd.Cmd):
 
     def help_destroy(self):
         print(
-            "Deletes an instance based on the class name and id"
+            "Deletes an instance based on\
+ the class name and id"
         )
 
     def do_all(self, line):
@@ -94,15 +97,21 @@ class HBNBCommand(cmd.Cmd):
         if c[0] != "" and c[0] not in my_list:
             print("** class doesn't exist **")
         elif c[0] != "":
-            all_models = [str(value) for value in my_obj.values() if value.__class__.__name__ == f"{c[0]}"]
+            all_models = [
+                str(value) for value in my_obj.values()
+                if value.__class__.__name__ == f"{c[0]}"
+            ]
             print(all_models)
         else:
-            all_models = list(str(my_obj[key]) for key, value in my_obj.items())
+            all_models = list(
+                str(my_obj[key]) for key, value in my_obj.items()
+            )
             print(all_models)
 
     def help_all(self):
         print(
-            "Prints all string representation of all instances based or not on the class name"
+            "Prints all string representation of all\
+instances based or not on the class name"
         )
 
     def do_update(self, line):
@@ -129,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
 
-        #find object instance
+        # find object instance
         obj = dict(filter(lambda item: item[0] == my_id, my_obj.items()))
         obj_dict = obj[my_id].__dict__
         obj_dict[c[2]] = c[3].strip('\"')
@@ -137,9 +146,9 @@ class HBNBCommand(cmd.Cmd):
 
     def help_update(self):
         print(
-            "Updates an instance based on the class name and id by adding or updating attribute"
+            "Updates an instance based on the class name\
+and id by adding or updating attribute"
         )
-
 
 
 if __name__ == '__main__':
