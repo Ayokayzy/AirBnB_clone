@@ -7,5 +7,5 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """a class Amenity that inherits from BaseModel"""
-    #public class attributes
+    # public class attributes
     name = ""
