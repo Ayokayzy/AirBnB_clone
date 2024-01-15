@@ -58,10 +58,9 @@ class FileStorage:
         If the file doesn’t exist, no exception should be raised)
         """
         # load string from file to a string
-        if not os.path.isfile(self.__file_path):
-            return
-        with open(self.__file_path, "r") as fp:
-            self.__objects = {
-                    key: all_class[val["__class__"]](**val)
-                    for key, val in json.load(fp).items()
-                }
+        if os.path.isfile(self.__file_path):
+            with open(self.__file_path, "r") as fp:
+                self.__objects = {
+                        key: all_class[val["__class__"]](**val)
+                        for key, val in json.load(fp).items()
+                    }
