@@ -48,7 +48,7 @@ class FileStorage:
         """
         my_dict = {key: value.to_dict() for key,
                    value in self.__objects.items()}
-        with open(self.__file_path, "w") as fp:
+        with open(self.__file_path, "w", encoding="utf-8") as fp:
             json.dump(my_dict, fp)
 
     def reload(self):
@@ -59,7 +59,7 @@ class FileStorage:
         """
         # load string from file to a string
         if os.path.isfile(self.__file_path):
-            with open(self.__file_path, "r") as fp:
+            with open(self.__file_path, "r", encoding="utf-8") as fp:
                 self.__objects = {
                         key: all_class[val["__class__"]](**val)
                         for key, val in json.load(fp).items()
