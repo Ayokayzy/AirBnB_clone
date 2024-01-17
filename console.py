@@ -82,8 +82,10 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
                 return
 
-            del my_obj[f"{c[0]}.{c[1]}"]
-            storage.save()
+            my_id = f"{c[0]}.{c[1]}"
+            if my_id in my_obj:
+                del my_obj[f"{c[0]}.{c[1]}"]
+                storage.save()
 
     def help_destroy(self):
         print(
