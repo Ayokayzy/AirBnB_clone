@@ -57,7 +57,7 @@ class FileStorage:
         if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised)
         """
-        # load string from file to a string
+
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as fp:
                 self.__objects = {

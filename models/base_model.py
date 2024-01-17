@@ -14,7 +14,7 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-        # Initializes an instance of the class
+        """Initializes an instance of the class"""
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
