@@ -64,3 +64,5 @@ class FileStorage:
                         key: all_class[val["__class__"]](**val)
                         for key, val in json.load(fp).items()
                     }
+        else:
+            return

@@ -86,6 +86,9 @@ class HBNBCommand(cmd.Cmd):
             if my_id in my_obj:
                 del my_obj[f"{c[0]}.{c[1]}"]
                 storage.save()
+            else:
+                print("** no instance found **")
+                return
 
     def help_destroy(self):
         print(
